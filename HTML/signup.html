@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../CSS/style2.css">
   <link rel="icon" href="../SLIKE/icon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../JS/script.js" defer></script>
   <title>Sign up for StockX</title>
 </head>
@@ -26,7 +27,7 @@
             </div>
 
             <div class="login">
-              <button class="button" onclick="window.location.href='../index.html'">Log In</button>
+              <button class="button" onclick="window.location.href='index.html'">Log In</button>
 
               </button>
 
@@ -54,12 +55,13 @@
               </div>
 
               <div class="geslo">
-                <div id="forma">
-                  <input type="password" id="password" name="password" required
-                  pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-                  title="Password must be at least 8 characters, with at least 1 uppercase letter, 1 number, and 1 special character (e.g., @$!%*?&)." placeholder="Password*">
-                  <img id="password-toggle" class="on" alt="">
-                </div>
+                <div id="forma" class="password-wrapper">
+				  <input type="password" id="password" name="password" required
+					pattern="(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
+					title="Password must be at least 8 characters, with at least 1 uppercase letter, 1 number, and 1 special character."
+					placeholder="Password*">
+				  <img id="password-toggle" class="toggle-icon on" src="../SLIKE/eye.png" alt="Toggle Password Visibility">
+				</div>
               </div>
               <div class="pozabljenoGeslo">
                 <span class="kajuse">At least 8 characters, 1 uppercase letter, 1 number & 1 symbol</span>
@@ -135,7 +137,7 @@
             <div class="toastBox"></div>
 
             <div class="tla">
-              <p id="spodnja">Already have an account?<a id="spodnjalink" href="../index.html"> Log In</a></p>
+              <p id="spodnja">Already have an account?<a id="spodnjalink" href="index.html"> Log In</a></p>
             </div>
           </div>
         </div>
@@ -148,7 +150,11 @@
       // Prevent page refresh
       event.preventDefault();
 
-      showToast("Signed up successfully!");
+	  Swal.fire({
+		icon: "success",
+		title: "You signed up successfully"
+	  });
+	  
     });
   </script>
 </body>
