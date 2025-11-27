@@ -4,16 +4,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="CSS/style.css">
-  <link rel="icon" href="SLIKE/icon.ico">
-  <script src="JS/script.js" defer></script>
+  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="icon" href="../SLIKE/icon.ico">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../JS/script.js" defer></script>
   <title>Log in to StockX</title>
 </head>
 
 <body>
   <div class="najvecji">
     <div class="glava">
-      <img src="SLIKE/stockx.png" alt="logo" id="slika">
+      <img src="../SLIKE/stockx.png" alt="logo" id="slika">
     </div>
     <div class="ozadje">
       <div class="podGlavo">
@@ -21,7 +22,7 @@
 
           <div class="signupInLogin">
             <div class="signup">
-              <button class="button" onclick="window.location.href='HTML/signup.html'">Sign Up</button>
+              <button class="button" onclick="window.location.href='signup.html'">Sign Up</button>
               </button>
             </div>
 
@@ -42,14 +43,13 @@
                 placeholder="Email Address*">
               </div>
               <div class="geslo">
-                <div id="forma">
-                  <input type="password" id="password" name="password"
-                    required
-                    pattern="(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}"
-                    title="Password must be at least 8 characters, with at least 1 uppercase letter, 1 number, and 1 special character (e.g., @$!%*?&)."
-                    placeholder="Password*">
-                  <img id="password-toggle" class="on" alt="">
-                </div>
+                <div id="forma" class="password-wrapper">
+				  <input type="password" id="password" name="password" required
+					pattern="(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}"
+					title="Password must be at least 8 characters, with at least 1 uppercase letter, 1 number, and 1 special character."
+					placeholder="Password*">
+				  <img id="password-toggle" class="toggle-icon on" src="../SLIKE/eye.png" alt="Toggle Password Visibility">
+				</div>
               </div>
               <div class="pozabljenoGeslo">
                 <a href="url" class="pozabigeslo">Forgot Password?</a>
@@ -114,7 +114,7 @@
             <div class="toastBox"></div>
 
             <div class="tla">
-              <p id="spodnja">Need an account?<a id="spodnjalink" href="HTML/signup.html"> Sign Up</a></p>
+              <p id="spodnja">Need an account?<a id="spodnjalink" href="signup.html"> Sign Up</a></p>
             </div>
           </div>
         </div>
@@ -132,7 +132,11 @@
       console.log("Email:", email);
       console.log("Password:", password);
 
-      showToast("Logged in successfully!");
+	  Swal.fire({
+		icon: "success",
+		title: "You logged in successfully"
+	  });
+	  
     });
   </script>
 </body>
