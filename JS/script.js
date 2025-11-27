@@ -8,28 +8,12 @@ function toggleCheck1() {
 const passwordInput = document.getElementById("password")
 const passwordToggle = document.getElementById("password-toggle")
 
-passwordToggle.addEventListener('click', () => {
-    const type = passwordInput.type === 'password' ? 'text' : 'password';
-    passwordInput.type = type;
+if (passwordToggle && passwordInput) {
+    passwordToggle.addEventListener("click", () => {
+        passwordInput.type =
+            passwordInput.type === "password" ? "text" : "password";
 
-    passwordToggle.classList.toggle("off")
-    passwordToggle.classList.toggle("on")
-})
-
-const toastBox = document.querySelector('.toastBox');
-
-function showToast(message) {
-    const toast = document.createElement('div');
-    toast.classList.add('toast', "success");
-    toast.innerHTML = '<button class="close-btn">X</button>' + message;
-    toastBox.appendChild(toast);
-
-    const closeButton = toast.querySelector('.close-btn');
-    closeButton.addEventListener('click', () => {
-        toast.remove();
+        passwordToggle.classList.toggle("on");
+        passwordToggle.classList.toggle("off");
     });
-
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
 }
